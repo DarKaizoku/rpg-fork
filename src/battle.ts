@@ -15,7 +15,8 @@ export class Battle {
 
     declare(): void {
 
-        while (this.hero.die() === false || this.enemy.die() === false) {
+        while (!this.hero.die() && !this.enemy.die()) {
+            //while (this.hero.getHealth() > 0 && this.enemy.getHealth() > 0) {
             this.hero.attack(this.enemy);
             this.enemy.attack(this.hero);
             console.log(this.hero, this.enemy);
@@ -27,7 +28,7 @@ export class Battle {
             this.healthUp(this.hero);
         }
         console.log(this.hero, this.enemy);
-
+        return;
     }
 
     xpUp(hero: Character) {
