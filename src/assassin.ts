@@ -1,18 +1,19 @@
 import { Enemy } from "./enemy"
+import { Hero } from "./hero";
 
 export class Assassin extends Enemy {
     constructor(name: string, health: number, strength: number, fly: boolean, lvl: number, xp: number) {
         super (name, health, strength, fly, lvl, xp)
     }
     
-    attackAssassin() {
+    attackAssassin(opponent:Hero) {
         let count = 0;
         if (count = 0) {
-            super.attack()
+            super.attack(opponent)
         }
         else {
-            super.setStrength(super.getStrength * 1.1)
-            super.attack()
+            super.setStrength(super.getStrength() * 1.1)
+            super.attack(opponent)
         }
         ++count
     }

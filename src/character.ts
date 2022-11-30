@@ -1,3 +1,4 @@
+import { Enemy } from "./enemy";
 import { Hero } from "./hero";
 
 
@@ -69,7 +70,7 @@ export class Character {
     attack(opponent: Hero | Enemy): void {
         opponent.health -= this.strength;
 
-
+        
     }
 
     die(): Boolean {

@@ -25,13 +25,13 @@ export class Hero extends Character {
     }
 
     attack(opponent: Enemy) {
-
-        if (this.race === 'elf') { // applique passif de l'elf si race = elf
+        const initStrength: number = this.getStrength();
+        if (this.race === 'elf') {// applique passif de l'elf si race = elf
             if (opponent.fly === true) {
-                
                 this.setStrength(this.getStrength() * 1.1);
             }
             else { this.setStrength(this.getStrength() * 0.9) }
+            this.setStrength(initStrength);
         };
 
         if (this.race === 'human') { // applique passif de l'elf si race = elf
@@ -39,22 +39,25 @@ export class Hero extends Character {
                 this.setStrength(this.getStrength() * 1.1);
             }
             else { this.setStrength(this.getStrength() * 0.9) }
+            this.setStrength(initStrength);
         };
 
         if (opponent instanceof Dragon) { // applique passif dragon 50 % res et 10 % + si fly
-            if (opponent.fly() === true) {
-
+            if (opponent.flight() === true) {
                 this.setStrength(this.getStrength() * 0.9)
             }
             this.setStrength(this.getStrength() * 0.5);
+            this.setStrength(initStrength);
         }
 
         if (opponent instanceof Werewolf) { //applique passif werewolf 50 % res
             this.setStrength(this.getStrength() * 0.5);
+            this.setStrength(initStrength);
         }
 
         if (opponent instanceof Berserker) { //applique passif berserk 30 % res
             this.setStrength(this.getStrength() * 0.7);
+            this.setStrength(initStrength);
         }
 
         if (opponent instanceof Golem) { //applique passif golem 50 % chance dégats = 0
@@ -62,14 +65,15 @@ export class Hero extends Character {
             if (rand === 0) {
                 this.setStrength(this.getStrength() * 0)
             }
+            this.setStrength(initStrength);
         }
 
         if (opponent instanceof Griffin) { //applique passif griffin 10 % res si fly
-            if (opponent.fly() === true) {
+            if (opponent.flight() === true) {
                 this.setStrength(this.getStrength() * 0.9)
             }
+            this.setStrength(initStrength);
         }
-
-        opponent.setHealth(opponent.getHealth() - this.getStrength());
+        super.attack(opponent);
     }
 }
