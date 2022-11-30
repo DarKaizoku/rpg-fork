@@ -1,4 +1,6 @@
 import { Character } from "./character";
+import { Enemy } from "./enemy";
+import { Hero } from "./hero";
 
 export class Battle {
 
@@ -11,12 +13,12 @@ export class Battle {
         this.enemy = enemy;
     }
 
-    battle(): void {
+    declare(): void {
 
-        while (!this.hero.die() || !this.enemy.die()) {
+        while (this.hero.die() === false || this.enemy.die() === false) {
             this.hero.attack(this.enemy);
             this.enemy.attack(this.hero);
-            console.log(hero, enemy);
+            console.log(this.hero, this.enemy);
         }
 
 
@@ -24,7 +26,7 @@ export class Battle {
             this.xpUp(this.hero);
             this.healthUp(this.hero);
         }
-        console.log(hero, enemy);
+        console.log(this.hero, this.enemy);
 
     }
 
@@ -33,9 +35,10 @@ export class Battle {
         this.lvlUp(hero);
     }
 
-    lvlUp(hero: Character): number {
+    lvlUp(hero: Character) {
         if (hero.getXp() === 10) {
-            return hero.setLvl(hero.getLvl() + 1);
+            hero.setStrength(hero.getStrength() + 10);
+            hero.setLvl(hero.getLvl() + 1);
         }
     }
 

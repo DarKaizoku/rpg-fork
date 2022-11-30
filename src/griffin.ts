@@ -4,10 +4,10 @@ export class Griffin extends Enemy {
     constructor(name: string, health: number, strength: number, fly: boolean, lvl: number, xp: number) {
         super (name, health, strength, fly, lvl, xp)
     }
-    fly() {
-        return true
+    flight():boolean {
+        return this.fly = true
     }
     attackFromSky() {
-        super.setStrength(super.getStrength * 1.1)        
+        super.setStrength(super.getStrength() * 1.1)        
     }
 }

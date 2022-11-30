@@ -1,4 +1,10 @@
+import { Berserker } from "./berserker";
 import { Character } from "./character";
+import { Dragon } from "./dragon";
+import { Enemy } from "./enemy";
+import { Golem } from "./golem";
+import { Griffin } from "./griffin";
+import { Werewolf } from "./werewolf";
 
 export class Hero extends Character {
 
@@ -35,7 +41,7 @@ export class Hero extends Character {
         };
 
         if (opponent instanceof Dragon) { // applique passif dragon 50 % res et 10 % + si fly
-            if (opponent.fly === true) {
+            if (opponent.flight() === true) {
                 this.setStrength(this.getStrength() * 0.9)
             }
             this.setStrength(this.getStrength() * 0.5);
@@ -57,11 +63,10 @@ export class Hero extends Character {
         }
 
         if (opponent instanceof Griffin) { //applique passif griffin 10 % res si fly
-            if (opponent.fly === true) {
+            if (opponent.flight() === true) {
                 this.setStrength(this.getStrength() * 0.9)
             }
         }
-
-        opponent.setHealth(opponent.getHealth() - this.getStrength());
+        super.attack(opponent);
     }
 }
