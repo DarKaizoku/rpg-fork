@@ -1,14 +1,22 @@
+import { Hero } from "./hero";
+
+
+
+
 export class Character {
     private name: string;
     private health: number;
     private strength: number;
+            fly: boolean;
     private lvl: number ;
     private xp: number ;
 
-    constructor(name: string, health: number, strength: number, lvl: number, xp: number) {
+
+    constructor(name: string, health: number, strength: number, fly: boolean, lvl: number, xp: number) {
         this.name = name;
         this.health = health;
-        this.strength = strength
+        this.strength = strength;
+        this.fly = fly;
         this.lvl = lvl;
         this.xp = xp;
     }
@@ -49,7 +57,7 @@ export class Character {
         return newLvl;
     }
 
-    getXP(): number {
+    getXp(): number {
         return this.xp;
     }
 
