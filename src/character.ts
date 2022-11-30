@@ -49,7 +49,7 @@ export class Character {
         return newLvl;
     }
 
-    getXP(): number {
+    getXp(): number {
         return this.xp;
     }
 
