@@ -1,3 +1,4 @@
+import { Assassin } from "./assassin";
 import { Character } from "./character";
 import { Dragon } from "./dragon";
 import { Enemy } from "./enemy";
@@ -38,18 +39,22 @@ export class Battle {
         console.log(this.hero.stat());
         console.log(this.enemy.stat());
 
-        while (!this.hero.die() && !this.enemy.die()) {
+        while (!this.hero.notAlive() && !this.enemy.notAlive()) {
             const initTour = 1;
             let tour = initTour;
             const tableTour = [2, 4, 6];
             //while (this.hero.getHealth() > 0 && this.enemy.getHealth() > 0) {
             this.hero.attack(this.enemy);
+            if(this.enemy instanceof Assassin){
+                this.enemy.attackAssassin(this.hero);
+            }
+            this.enemy.attack(this.hero);
             ++tour;
             //this.affichageTour(this.hero.stat(),tour);
 
 
 
-            if ( !(this.enemy instanceof (Dragon || Griffin))) {
+            /* if ( !(this.enemy instanceof (Dragon || Griffin))) {
                 this.enemy.attack(this.hero);
             }
             else {
@@ -68,7 +73,7 @@ export class Battle {
             
             if (tour === 6) {
                 tour = initTour
-            }
+            } */
 
             
             console.log(this.hero, this.enemy);

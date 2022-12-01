@@ -12,7 +12,7 @@ export class Assassin extends Enemy {
             super.attack(opponent)
         }
         else {
-            super.setStrength(super.getStrength() * 1.1)
+            this.setStrength(this.getStrength() * 1.1);
             super.attack(opponent)
         }
         ++count
