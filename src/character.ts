@@ -73,8 +73,25 @@ export class Character {
         
     }
 
-    die(): Boolean {
+    notAlive(): Boolean {
         if (this.health <= 0) { return true }
         else { return false }
     };
+
+    die():string {
+        return `${this.name} est mort !`
+    }
+
+    stat():any {
+        let tabl = [];
+
+        tabl.unshift(this.getXp());
+        tabl.unshift(this.getLvl());
+        tabl.unshift(this.getStrength());
+        tabl.unshift(this.getHealth());
+        tabl.unshift(this.getName());
+
+        return tabl;
+
+    }
     }
