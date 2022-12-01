@@ -27,7 +27,7 @@ export class Battle {
             this.xpUp(this.hero);
             this.healthUp(this.hero);
         }
-        console.log(this.hero, this.enemy);
+        //console.log(this.hero, this.enemy);
         return;
     }
 
