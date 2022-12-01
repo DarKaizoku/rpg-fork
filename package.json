@@ -1,27 +1,22 @@
 {
-  "name": "rpg",
+  "name": "template-phaser3-esbuild-jsdoc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc -w",
-    "dev": "nodemon ./dist/index.js",
-    "build": "tsc"
+    "start": "tsc -w --noEmit & node ./esbuild/dev.cjs",
+    "build": "node ./esbuild/build.cjs",
+    "old-start": "esbuild ./src/index.ts --bundle --outfile=./dist/index.js --servedir=dist --sourcemap --target=chrome58,firefox57,safari11,edge16"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "nodemon": "^2.0.20"
+    "esbuild": "^0.14.14",
+    "phaser": "^3.55.2",
+    "phaser3-rex-plugins": "^1.1.68"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevinbatard/rpg.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kevinbatard/rpg/issues"
-  },
-  "homepage": "https://github.com/kevinbatard/rpg#readme"
+  "devDependencies": {
+    "esbuild-dev-server": "^0.3.0"
+  }
 }

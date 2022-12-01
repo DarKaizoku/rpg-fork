@@ -90,6 +90,7 @@ export class Character {
         tabl.unshift(this.getStrength());
         tabl.unshift(this.getHealth());
         tabl.unshift(this.getName());
+        
 
         return tabl;
 
