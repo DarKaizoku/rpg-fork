@@ -78,4 +78,11 @@ export class Hero extends Character {
         this.setStrength(initStrength);
 
     }
+
+    stat(): any {
+        let tabl = super.stat();
+        tabl.push(this.getRace());
+        
+        return tabl;
+    }
 }
