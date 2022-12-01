@@ -50,13 +50,7 @@ export class Battle {
             this.affichageTour(this.hero.stat(),tour);
             ++tour;
 
-
-            if(this.enemy instanceof Assassin){
-                this.enemy.attackAssassin(this.hero);
-            }
-
-
-
+            
             if (this.enemy instanceof (Dragon || Griffin)) {
                 if (tour === 4){
                     this.enemy.flight();
@@ -65,7 +59,14 @@ export class Battle {
                     this.enemy.attackFromSky(this.hero);
                 }
             }
-            this.enemy.attack(this.hero);
+
+            if(this.enemy instanceof Assassin){
+                this.enemy.attackAssassin(this.hero);
+            }
+
+            if(!(this.enemy instanceof Assassin)){
+                this.enemy.attack(this.hero);
+            }
             this.affichageTour(this.enemy.stat(),tour);
             ++tour;
             
