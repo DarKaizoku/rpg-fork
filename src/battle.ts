@@ -44,10 +44,10 @@ export class Battle {
             <div>
             <tr>
                 <th class="pt-4" scope="row" rowspan="2">${tour}</th>
-                <td>${tableauHero[0]} attaque avec une force de :${tableauHero[2]}</td>
+                <td>${tableauHero[0]} attaque avec une force de :${tableauHero[2].toFixed(1)}</td>
             </tr>
             <tr>
-                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1]}. ${this.affichageDeath(tableauHero,tableauEnemy)}</td>
+                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1].toFixed(1)}. ${this.affichageDeath(tableauHero,tableauEnemy)}</td>
             </tr>
         </div>`;
                 affichage.innerHTML += output;
@@ -98,8 +98,8 @@ export class Battle {
     `;
     }
     affichageDeath(tableauHero,tableauEnemy){
-            if(tableauHero[1] <= 0){return this.hero.die()}
-            if(tableauEnemy[1] <= 0){return this.enemy.die()}
+            if(this.hero.getHealth() <= 0){return this.hero.die()};
+            if(this.enemy.getHealth() <= 0){return this.enemy.die()};
             if(tableauHero[1] > 0 || tableauEnemy[1] > 0 ){return ""}
     }
     declare(): void {
