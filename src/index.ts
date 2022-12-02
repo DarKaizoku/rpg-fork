@@ -21,11 +21,11 @@ const tableEnemy: any[] = [];
 let nameChoice: string;
 let playerRace: any[] = [];
 let enemyRace: any[] = [];
-let enemy: Enemy
-let race: Hero
+let enemy: Enemy;
+let race: Hero;
 
 tableRace.push('elf', 'human', 'dwarf');
-tableEnemy.push('Assassin', 'Berserker', 'Dragon', 'Golem', 'Griffin', 'Werewolf')
+tableEnemy.push('Assassin', 'Berserker', 'Dragon', 'Golem', 'Griffin', 'Werewolf');
 
 subName.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -33,6 +33,9 @@ subName.addEventListener('submit', (e) => {
     console.log(nameChoice);
     clickName.classList.add('disabled');
     subMit.setAttribute('readonly','');
+    selectRace.removeAttribute('disabled');
+    selectEnemy.removeAttribute('disabled');
+    
     
 }) 
 
@@ -41,6 +44,8 @@ clickName.addEventListener('click', (e) => {
     console.log(nameChoice);
     clickName.classList.add('disabled');
     subMit.setAttribute('readonly', '');
+    selectRace.removeAttribute('disabled');
+    selectEnemy.removeAttribute('disabled');
     
 
 }) 
@@ -117,12 +122,10 @@ function pushEnemy(): void {
     }
 }
 
-
 pushEnemy();
 
 
-
 fight.addEventListener('click', () => {
-    let battle = new Battle(race, enemy);
+let battle = new Battle(race, enemy);
     battle.declare();
 })
