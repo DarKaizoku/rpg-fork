@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1953ea82b364214073a67c3d97abec610683f681
 import { Assassin } from "./assassin";
 import { Character } from "./character";
 import { Dragon } from "./dragon";
@@ -41,11 +44,6 @@ export class Battle {
 
             const affichage: HTMLElement | any = document.getElementById('combat');
 
-            /* let dieHero = ;
-            let dieEnemy = ;
-
-            if() */
-
             let output: string = `
             <div>
             <tr>
@@ -53,7 +51,7 @@ export class Battle {
                 <td>${tableauHero[0]} attaque avec une force de :${tableauHero[2]}</td>
             </tr>
             <tr>
-                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1]}</td>
+                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1]}. ${this.affichageDeath(tableauHero,tableauEnemy)}</td>
             </tr>
         </div>`;
                 affichage.innerHTML += output;
@@ -68,11 +66,11 @@ export class Battle {
         <tr>
         ${this.affichageHealthUp(tableauHero,tableauEnemy)}
         </tr>
-        </div>
         <div>
+        </div>
         <tr><th class="pt-4" scope="row" rowspan="2">Nouvelles Stats</th>
-        <td class="text-center">name: ${tableauHero[0]} , health: ${tableauHero[1]}, strength: ${tableauHero[2]}, lvl: ${tableauHero[3]}, xp: ${tableauHero[4]}, race: ${tableauHero[5]}</td>
-        </tr>
+        <td>name: ${tableauHero[0]} , health: ${tableauHero[1]}, strength: ${tableauHero[2]}, lvl: ${tableauHero[3]}, xp: ${tableauHero[4]}, race: ${tableauHero[5]}</td>
+        </tr><td>THE END !!!</td>
         </div>
     `;
             affichage.innerHTML += output;
@@ -102,6 +100,11 @@ export class Battle {
         ${tableauHero[0]} recupere 10% de health de ${tableauEnemy[0]}, ${healthEnemy}* 0.1 = ${healthUp} .
         </td>
     `;
+    }
+    affichageDeath(tableauHero,tableauEnemy){
+            if(tableauHero[1] <= 0){return this.hero.die()}
+            if(tableauEnemy[1] <= 0){return this.enemy.die()}
+            if(tableauHero[1] > 0 || tableauEnemy[1] > 0 ){return ""}
     }
     declare(): void {
         
