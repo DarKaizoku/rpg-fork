@@ -26,23 +26,23 @@ let race: Hero
 tableRace.push('elf', 'human', 'dwarf');
 tableEnemy.push('Assassin', 'Berserker', 'Dragon', 'Golem', 'Griffin')
 
-subName.addEventListener('submit', (e) => {
+/* subName.addEventListener('submit', (e) => {
     e.preventDefault();
     nameChoice = e.target[0].value;
     console.log(nameChoice);
     clickName.classList.add('disabled');
     subMit.setAttribute('readonly','');
     
-})
+}) */
 
-clickName.addEventListener('click', (e) => {
+/* clickName.addEventListener('click', (e) => {
     nameChoice = (e.target as HTMLInputElement).offsetParent[0].value;
     console.log(nameChoice);
     clickName.classList.add('disabled');
     subMit.setAttribute('readonly', '');
     
 
-}) 
+})  */
 
 selectRace.addEventListener('change', (e) => {
     const who = (e.target as HTMLInputElement).value;
