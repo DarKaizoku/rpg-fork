@@ -52,80 +52,76 @@ export class Battle {
             </tr>
         </div>`;
                 affichage.innerHTML += output;
-            /* const newRow1 = document.createElement("tr");
-            const newCaseRound = document.createElement(`"th class="pt-4" scope="row" rowspan="2"`);
-            newCaseRound.textContent = `${tour}`;
-            const newCaseAction1 = document.createElement("td");
-            newCaseAction1.textContent = `Cloud attaque en 1er avec strength`;
-            const newRow2 = document.createElement("tr");
-            const newCaseAction2 = document.createElement("td");
-            newCaseAction2.textContent = `test 1 ${tableau} 2 Test..`;
-            newRow1.appendChild(newCaseRound);
-            newRow1.appendChild(newCaseAction1);
-            affichage.appendChild(newRow1);
-            newRow2.appendChild(newCaseAction2);
-            affichage.appendChild(newRow2); */
-        }
+    }
 
-        declare(): void {
+    declare(): void {
+        
+        this.affichageStat(this.hero.stat(),this.enemy.stat());
+        //const initTour = 1;
+        let tour = 1;
+        let countAffichage = 1;
 
-
-            this.affichageStat(this.hero.stat(),this.enemy.stat());
-
-            const initTour = 1;
-            let tour = 1;
-            while(!this.hero.notAlive() && !this.enemy.notAlive()) {
+        while ((!this.hero.notAlive()) && (!this.enemy.notAlive())) { // while (this.hero.getHealth() > 0 && this.enemy.getHealth() > 0) {
+            //console.log(`TOUR ${tour}`)
+            //console.log(countAffichage);
             
+            this.hero.attack(this.enemy)
+            //this.affichageTour(this.hero.stat(), tour);
+            //console.log(this.enemy)
             
-            
-            //while (this.hero.getHealth() > 0 && this.enemy.getHealth() > 0) {
-            this.hero.attack(this.enemy);
-            this.affichageTour(this.hero.stat(),this.enemy.stat(),tour);
-            ++tour;
-
+            ++tour
+            ++countAffichage
+            //console.log(`TOUR ${tour}`)
+            //console.log(countAffichage);
 
             if (this.enemy instanceof Assassin) {
                 this.enemy.attackAssassin(this.hero);
             }
 
+            if (!(this.enemy instanceof Assassin) && !(this.enemy instanceof Dragon) && !(this.enemy instanceof Griffin)) {
+                this.enemy.attack(this.hero);
+            }
 
-
-            if (this.enemy instanceof (Dragon || Griffin)) {
-                if (tour === 4) {
+            if ((this.enemy instanceof Dragon) || (this.enemy instanceof Griffin)) {
+                if (tour === 2) {
+                    this.enemy.attack(this.hero);
+                }
+                else if (tour === 4) {
+                    this.enemy.attack(this.hero);
                     this.enemy.flight();
                 }
                 else if (tour === 6) {
                     this.enemy.attackFromSky(this.hero);
+                    this.enemy.fly = false;
                 }
             }
 
-            if(this.enemy instanceof Assassin){
-                this.enemy.attackAssassin(this.hero);
-            }
-
-            if(!(this.enemy instanceof Assassin)){
-                this.enemy.attack(this.hero);
-            }
-            this.affichageTour(this.enemy.stat(),this.hero.stat(),tour);
-            ++tour;
+            //console.log(this.hero);
+            //this.affichageTour(this.enemy.stat(),tour);
+            ++tour
+            ++countAffichage
+            //console.log(`TOUR ${tour}`)
+            //console.log(countAffichage);
+            
 
             if (tour > 6) {
                 tour = 1
+                //console.log(`RESET TOUR`)
             }
 
-            console.log(this.hero, this.enemy);
+            console.log(this.hero, this.enemy)
         }
         //console.log(this.hero, this.enemy);
 
         if (this.enemy.notAlive()) { console.log(this.enemy.die()) };
 
-        if (!this.hero.notAlive()) {
+        /* if (!this.hero.notAlive()) {
             this.xpUp(this.hero);
             this.healthUp(this.hero);
             console.log(this.hero.stat());
         } else { console.log(this.hero.die()) };
         //console.log(this.hero, this.enemy);
-        return;
+        return; */
     }
 
     xpUp(hero: Character) {

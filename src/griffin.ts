@@ -11,6 +11,7 @@ export class Griffin extends Enemy {
     attackFromSky(opponent:Hero) {
         const initStrength: number = this.getStrength();   
         super.setStrength(super.getStrength() * 1.1)
+        super.attack(opponent)
         this.setStrength(initStrength);        
     }
 }
