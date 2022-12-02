@@ -41,6 +41,11 @@ export class Battle {
 
             const affichage: HTMLElement | any = document.getElementById('combat');
 
+            /* let dieHero = ;
+            let dieEnemy = ;
+
+            if() */
+
             let output: string = `
             <div>
             <tr>
@@ -53,10 +58,55 @@ export class Battle {
         </div>`;
                 affichage.innerHTML += output;
     }
+    affichageVictoire(tableauHero,tableauEnemy){
+        const affichage: HTMLElement | any = document.getElementById('combat');
 
+        let output: string = `
+        <div>
+        <tr><th class="pt-4" scope="row" rowspan="2">Fin de Kombat</th>
+        ${this.affichageXpUp(tableauHero[0])}</tr>
+        <tr>
+        ${this.affichageHealthUp(tableauHero,tableauEnemy)}
+        </tr>
+        </div>
+        <div>
+        <tr><th class="pt-4" scope="row" rowspan="2">Nouvelles Stats</th>
+        <td class="text-center">name: ${tableauHero[0]} , health: ${tableauHero[1]}, strength: ${tableauHero[2]}, lvl: ${tableauHero[3]}, xp: ${tableauHero[4]}, race: ${tableauHero[5]}</td>
+        </tr>
+        </div>
+    `;
+            affichage.innerHTML += output;
+        
+            
+
+    }
+    affichageXpUp(name){
+        const affichage: HTMLElement | any = document.getElementById('combat');
+        let output: string = '';
+        return output = `
+        <td>
+        L'xp de ${name} augmente de 2.
+        </td>
+    `;
+            
+        
+    }
+    affichageHealthUp(tableauHero,tableauEnemy){
+        const affichage: HTMLElement | any = document.getElementById('combat');
+
+        let healthEnemy = tableauEnemy[1].toFixed(1);
+        let healthUp = (tableauEnemy[1] * 0.1).toFixed(1) ;
+
+        let output: string = '';
+        return output = `<td>
+        ${tableauHero[0]} recupere 10% de health de ${tableauEnemy[0]}, ${healthEnemy}* 0.1 = ${healthUp} .
+        </td>
+    `;
+    }
     declare(): void {
         
         this.affichageStat(this.hero.stat(),this.enemy.stat());
+        let initEnemyStat = this.enemy.stat();
         //const initTour = 1;
         let tour = 1;
         let countAffichage = 1;
@@ -66,7 +116,7 @@ export class Battle {
             //console.log(countAffichage);
             
             this.hero.attack(this.enemy)
-            //this.affichageTour(this.hero.stat(), tour);
+            this.affichageTour(this.hero.stat(),this.enemy.stat(), countAffichage);
             //console.log(this.enemy)
             
             ++tour
@@ -97,7 +147,9 @@ export class Battle {
             }
 
             //console.log(this.hero);
-            //this.affichageTour(this.enemy.stat(),tour);
+            if(this.enemy.getHealth() > 0){
+                this.affichageTour(this.enemy.stat(),this.hero.stat(),countAffichage)
+            }
             ++tour
             ++countAffichage
             //console.log(`TOUR ${tour}`)
@@ -109,19 +161,19 @@ export class Battle {
                 //console.log(`RESET TOUR`)
             }
 
-            console.log(this.hero, this.enemy)
+            
         }
         //console.log(this.hero, this.enemy);
 
         if (this.enemy.notAlive()) { console.log(this.enemy.die()) };
 
-        /* if (!this.hero.notAlive()) {
+        if (!this.hero.notAlive()) {
             this.xpUp(this.hero);
             this.healthUp(this.hero);
-            console.log(this.hero.stat());
+            this.affichageVictoire(this.hero.stat(),initEnemyStat);
         } else { console.log(this.hero.die()) };
         //console.log(this.hero, this.enemy);
-        return; */
+        return;
     }
 
     xpUp(hero: Character) {
