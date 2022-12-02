@@ -81,7 +81,7 @@ export class Character {
     }
 
     stat():any {
-        let tabl = [];
+        let tabl : any[] = [];
 
         tabl.unshift(this.getXp());
         tabl.unshift(this.getLvl());
