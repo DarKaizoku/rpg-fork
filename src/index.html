@@ -26,7 +26,7 @@
 
     <div class="container d-flex flex-column align-items-center">
         <div class="col mb-3">
-            <select id="selectHeroRace" class="form-select form-select-sm" aria-label="Default select example">
+            <select id="selectHeroRace" class="form-select form-select-sm" aria-label="Default select example" disabled>
                 <option selected>Select a Hero</option>
             </select>
         </div>
@@ -35,14 +35,14 @@
             <p>VS</p>
         </div>
         <div class="col mb-3">
-            <select id="selectEnemy" class="form-select form-select-sm mb-4" aria-label="Default select example">
+            <select id="selectEnemy" class="form-select form-select-sm mb-4" aria-label="Default select example" disabled>
                 <option selected>Select an Enemy</option>
             </select>
         </div>
     </div>
     <div class="container d-flex justify-content-center">
         <div>
-            <button type="button" class="btn btn-outline-dark">Fight !</button>
+            <button id="launchBattle" type="button" class="btn btn-outline-dark">Fight !</button>
         </div>
     </div>
 
@@ -54,7 +54,7 @@
     </table>
     <div class="container d-flex justify-content-center">
         <div>
-            <button id="launchBattle" type="button" class="btn btn-outline-warning">
+            <button id="restart" type="button" class="btn btn-outline-warning" onClick="window.location.reload()">
                 Try Again !
             </button>
         </div>
