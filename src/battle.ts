@@ -47,7 +47,7 @@ export class Battle {
                 <td>${tableauHero[0]} attaque avec une force de :${tableauHero[2].toFixed(1)}</td>
             </tr>
             <tr>
-                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1].toFixed(1)}. ${this.affichageDeath(tableauHero,tableauEnemy)}</td>
+                <td>${tableauEnemy[0]} recoit ${tableauHero[2].toFixed(1)} de dégats, ${tableauEnemy[0]} health passe a ${tableauEnemy[1].toFixed(1)} de points de vie. ${this.affichageDeath(tableauHero,tableauEnemy)}</td>
             </tr>
         </div>`;
                 affichage.innerHTML += output;
@@ -65,13 +65,11 @@ export class Battle {
         <div>
         </div>
         <tr><th class="pt-4" scope="row" rowspan="2">Nouvelles Stats</th>
-        <td>name: ${tableauHero[0]} , health: ${tableauHero[1]}, strength: ${tableauHero[2]}, lvl: ${tableauHero[3]}, xp: ${tableauHero[4]}, race: ${tableauHero[5]}</td>
+        <td>name: ${tableauHero[0]} , health: ${tableauHero[1].toFixed(1)}, strength: ${tableauHero[2]}, lvl: ${tableauHero[3]}, xp: ${tableauHero[4]}, race: ${tableauHero[5]}</td>
         </tr><td>THE END !!!</td>
         </div>
     `;
             affichage.innerHTML += output;
-        
-            
 
     }
     affichageXpUp(name){
@@ -163,8 +161,6 @@ export class Battle {
             
         }
         //console.log(this.hero, this.enemy);
-
-        //if (this.enemy.notAlive()) { console.log(this.enemy.die()) };
 
         if (this.enemy.notAlive()) {
             this.xpUp(this.hero);
