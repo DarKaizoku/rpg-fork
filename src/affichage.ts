@@ -1,16 +1,13 @@
-/* const selectHero = document.getElementById('selectHero');
-const selectEnemy = document.getElementById('selectEnemy');
+import { Assassin } from "./assassin";
+import { Berserker } from "./berserker";
+import { Dragon } from "./dragon";
+import { Golem } from "./golem";
+import { Griffin } from "./griffin";
 
-let heroChoice = "";
-let enemyChoice = "";
 
-selectHero.addEventListener('change', event => {
-    event.preventDefault();
-    heroChoice = document.getElementById(`userID${this.value}`).textContent;
-    return INPUT.value = ""; 
-})
 
-selectEnemy.addEventListener('change', event => {
+
+/* selectEnemy.addEventListener('change', event => {
     event.preventDefault();
     enemyChoice = document.getElementById(`userID${this.value}`).textContent;
     return INPUT.value = ""; 

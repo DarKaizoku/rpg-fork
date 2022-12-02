@@ -6,6 +6,8 @@ import { Golem } from "./golem";
 import { Griffin } from "./griffin";
 import { Werewolf } from "./werewolf";
 
+
+
 export class Hero extends Character {
 
     private race: string;
@@ -85,4 +87,5 @@ export class Hero extends Character {
         
         return tabl;
     }
+
 }
