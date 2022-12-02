@@ -14,7 +14,7 @@ const selectEnemy = document.getElementById('selectEnemy');
 const subName = document.getElementById('chooseName');
 const clickName = document.getElementById('button-addon2');
 const subMit = document.getElementById('submit');
-const fight = document.getElementById('launchBattle')
+const fight = document.getElementById('launchBattle');
 
 const tableRace: any[] = [];
 const tableEnemy: any[] = [];
@@ -120,12 +120,9 @@ function pushEnemy(): void {
 
 pushEnemy();
 
-let battle = new Battle(race, enemy);
+
 
 fight.addEventListener('click', () => {
+    let battle = new Battle(race, enemy);
     battle.declare();
 })
-
-
-
-
