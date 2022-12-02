@@ -16,21 +16,20 @@
 
     <form id="chooseName" class="input-group input-group-sm justify-content-center flex-row mb-3">
         <div class="col-xs-5">
-            <input type="text" class="form-control" placeholder="Choose Hero's Name"
-                aria-label="Recipient's username" aria-describedby="button-addon2" />
+            <input id="submit" type="text" class="form-control" placeholder="Choose Hero's Name" aria-label="Recipient's username"
+                aria-describedby="button-addon2" />
         </div>
         <button class="btn btn-outline-dark rounded" type="button" id="button-addon2">
             Select
         </button>
     </form>
-    
+
     <div class="container d-flex flex-column align-items-center">
         <div class="col mb-3">
             <select id="selectHeroRace" class="form-select form-select-sm" aria-label="Default select example">
                 <option selected>Select a Hero</option>
             </select>
         </div>
-
 
         <div class="col text-center mb-1">
             <p>VS</p>
@@ -47,22 +46,19 @@
         </div>
     </div>
 
-    <table class="container table table-dark table-striped mt-5 text-center">
+    <table id="combat" class="container table table-dark table-striped mt-5 text-center">
         <tr>
             <th scope="col">Round</th>
             <th scope="col">Actions</th>
         </tr>
-<!--         <tr>
-            <th class="pt-4" scope="row" rowspan="2">1</th>
-            <td>Machin tappe bidule avec une force de 30 !</td>
-        </tr>
-        <tr>
-            <td>Bidule reçois 30 dégats !</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-        </tr> -->
     </table>
+    <div class="container d-flex justify-content-center">
+        <div>
+            <button id="launchBattle" type="button" class="btn btn-outline-warning">
+                Try Again !
+            </button>
+        </div>
+    </div>
 </body>
 
 </html>
