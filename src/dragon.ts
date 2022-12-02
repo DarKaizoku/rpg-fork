@@ -11,6 +11,6 @@ export class Dragon extends Enemy {
     attackFromSky(opponent:Hero) {
         const initStrength: number = this.getStrength();   
         super.setStrength(super.getStrength() * 1.1)
-        this.setStrength(initStrength);       
+        this.setStrength(initStrength);
     }
 }

@@ -66,3 +66,4 @@ let battleTest = new Battle(jeanPierre,drake);
 
 battleTest.declare(); */
 
+
