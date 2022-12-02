@@ -55,7 +55,7 @@ function pushEnemy(): void {
 
 pushEnemy();
 
-let Enemy = new `${enemyRace}`()
+//let Enemy = new `${enemyRace}`()
 /* 
 let jeanPierre = new Hero("Jean-Pierre",80,20,false,0,0,"human");
 
