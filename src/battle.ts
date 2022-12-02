@@ -52,16 +52,20 @@ export class Battle {
         console.log(this.enemy.stat());
         //const initTour = 1;
         let tour = 1;
+        let countAffichage = 1;
 
         while ((!this.hero.notAlive()) && (!this.enemy.notAlive())) { // while (this.hero.getHealth() > 0 && this.enemy.getHealth() > 0) {
             //console.log(`TOUR ${tour}`)
+            //console.log(countAffichage);
             
             this.hero.attack(this.enemy)
             //this.affichageTour(this.hero.stat(), tour);
             //console.log(this.enemy)
             
             ++tour
+            ++countAffichage
             //console.log(`TOUR ${tour}`)
+            //console.log(countAffichage);
 
             if (this.enemy instanceof Assassin) {
                 this.enemy.attackAssassin(this.hero);
@@ -88,7 +92,10 @@ export class Battle {
             //console.log(this.hero);
             //this.affichageTour(this.enemy.stat(),tour);
             ++tour
+            ++countAffichage
             //console.log(`TOUR ${tour}`)
+            //console.log(countAffichage);
+            
 
             if (tour > 6) {
                 tour = 1
