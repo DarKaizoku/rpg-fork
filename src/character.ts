@@ -2,8 +2,6 @@ import { Enemy } from "./enemy";
 import { Hero } from "./hero";
 
 
-
-
 export class Character {
     private name: string;
     private health: number;
@@ -90,7 +88,6 @@ export class Character {
         tabl.unshift(this.getStrength());
         tabl.unshift(this.getHealth());
         tabl.unshift(this.getName());
-        
 
         return tabl;
 
