@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 1953ea82b364214073a67c3d97abec610683f681
 import { Assassin } from "./assassin";
 import { Character } from "./character";
 import { Dragon } from "./dragon";
