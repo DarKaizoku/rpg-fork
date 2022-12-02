@@ -1,3 +1,4 @@
+import { enemyRace, playerRace } from ".";
 import { Assassin } from "./assassin";
 import { Character } from "./character";
 import { Dragon } from "./dragon";
@@ -17,21 +18,40 @@ export class Battle {
         this.enemy = enemy;
     }
 
+    affichageStat(tableau: any,tableau2: any) {
 
-    affichageTour(tableau: any, tour: number) {
+        const affichage: HTMLElement | any = document.getElementById('combat');
+
+        let output: string = `
+        <div>
+        <tr>
+            <th class="pt-4" scope="row" rowspan="2">0</th>
+            <td>name: ${tableau[0]} , health: ${tableau[1]}, strength: ${tableau[2]}, lvl: ${tableau[3]}, xp: ${tableau[4]}, race: ${tableau[5]}</td>
+        </tr>
+        <tr>
+            
+            <td>name: ${tableau2[0]} , health: ${tableau2[1]}, strength: ${tableau2[2]}, lvl: ${tableau2[3]}, xp: ${tableau2[4]}</td>
+        </tr>
+    </div>
+    `;
+            affichage.innerHTML += output;
+        
+    }
+    affichageTour(tableauHero: any,tableauEnemy: any, tour: number) {
 
             const affichage: HTMLElement | any = document.getElementById('combat');
 
             let output: string = `
-            <div id="combat">
+            <div>
             <tr>
                 <th class="pt-4" scope="row" rowspan="2">${tour}</th>
-                <td>${tableau[0]} attaque en 1er avec une force de :${tableau[2]}</td>
+                <td>${tableauHero[0]} attaque avec une force de :${tableauHero[2]}</td>
             </tr>
-        </div>
-              `;
-
-              affichage.innerHTML += output;
+            <tr>
+                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1]}</td>
+            </tr>
+        </div>`;
+                affichage.innerHTML += output;
             /* const newRow1 = document.createElement("tr");
             const newCaseRound = document.createElement(`"th class="pt-4" scope="row" rowspan="2"`);
             newCaseRound.textContent = `${tour}`;
@@ -50,8 +70,8 @@ export class Battle {
         declare(): void {
 
 
-            console.log(this.hero.stat());
-            console.log(this.enemy.stat());
+            this.affichageStat(this.hero.stat(),this.enemy.stat());
+
             const initTour = 1;
             let tour = 1;
             while(!this.hero.notAlive() && !this.enemy.notAlive()) {
@@ -60,7 +80,7 @@ export class Battle {
             
             //while (this.hero.getHealth() > 0 && this.enemy.getHealth() > 0) {
             this.hero.attack(this.enemy);
-            this.affichageTour(this.hero.stat(), tour);
+            this.affichageTour(this.hero.stat(),this.enemy.stat(),tour);
             ++tour;
 
 
@@ -86,7 +106,7 @@ export class Battle {
             if(!(this.enemy instanceof Assassin)){
                 this.enemy.attack(this.hero);
             }
-            this.affichageTour(this.enemy.stat(),tour);
+            this.affichageTour(this.enemy.stat(),this.hero.stat(),tour);
             ++tour;
 
             if (tour > 6) {

@@ -13,8 +13,8 @@ const selectEnemy = document.getElementById('selectEnemy');
 
 const tableRace: any[] = [];
 const tableEnemy: any[] = [];
-let playerRace: any[] = [];
-let enemyRace: any[] = [];
+export let playerRace: any[] = [];
+export let enemyRace: any[] = [];
 
 tableRace.push('elf', 'human', 'dwarf');
 tableEnemy.push('Assassin', 'Berserker', 'Dragon', 'Golem', 'Griffin')
@@ -55,8 +55,7 @@ function pushEnemy(): void {
 
 pushEnemy();
 
-let Enemy = new `${enemyRace}`()
-/* 
+
 let jeanPierre = new Hero("Jean-Pierre",80,20,false,0,0,"human");
 
 let drake = new Dragon("ChienDenté",50,10,false,0,0);
@@ -64,6 +63,6 @@ let drake = new Dragon("ChienDenté",50,10,false,0,0);
 
 let battleTest = new Battle(jeanPierre,drake);
 
-battleTest.declare(); */
+battleTest.declare();
 
 
