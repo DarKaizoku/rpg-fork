@@ -1,4 +1,4 @@
-import { enemyRace, playerRace } from ".";
+
 import { Assassin } from "./assassin";
 import { Character } from "./character";
 import { Dragon } from "./dragon";

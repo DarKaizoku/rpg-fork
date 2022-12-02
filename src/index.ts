@@ -14,6 +14,7 @@ const selectEnemy = document.getElementById('selectEnemy');
 const subName = document.getElementById('chooseName');
 const clickName = document.getElementById('button-addon2');
 const subMit = document.getElementById('submit');
+const fight = document.getElementById('launchBattle')
 
 const tableRace: any[] = [];
 const tableEnemy: any[] = [];
@@ -24,25 +25,25 @@ let enemy: Enemy
 let race: Hero
 
 tableRace.push('elf', 'human', 'dwarf');
-tableEnemy.push('Assassin', 'Berserker', 'Dragon', 'Golem', 'Griffin')
+tableEnemy.push('Assassin', 'Berserker', 'Dragon', 'Golem', 'Griffin', 'Werewolf')
 
-/* subName.addEventListener('submit', (e) => {
+subName.addEventListener('submit', (e) => {
     e.preventDefault();
     nameChoice = e.target[0].value;
     console.log(nameChoice);
     clickName.classList.add('disabled');
     subMit.setAttribute('readonly','');
     
-}) */
+}) 
 
-/* clickName.addEventListener('click', (e) => {
+clickName.addEventListener('click', (e) => {
     nameChoice = (e.target as HTMLInputElement).offsetParent[0].value;
     console.log(nameChoice);
     clickName.classList.add('disabled');
     subMit.setAttribute('readonly', '');
     
 
-})  */
+}) 
 
 selectRace.addEventListener('change', (e) => {
     const who = (e.target as HTMLInputElement).value;
@@ -79,24 +80,26 @@ selectEnemy.addEventListener('change', (e) => {
     enemyRace.push(wich);
 
     switch (wich) {
-        case 'Assassin': enemy = new Assassin('Valeera', 100, 20, false, 0, 0);
+        case 'Assassin': enemy = new Assassin('Valeera', 100, 20, false, 1, 0);
 
             break;
-        case 'Berserker': enemy = new Berserker('Garosh', 110, 22, false, 0, 0);
-
-            break;
-
-        case 'Dragon': enemy = new Dragon('Nozdormu', 125, 25, false, 0, 0);
+        case 'Berserker': enemy = new Berserker('Garosh', 110, 22, false, 1, 0);
 
             break;
 
-        case 'Golem': enemy = new Golem('Célestial Golem', 130, 20, false, 0, 0);
+        case 'Dragon': enemy = new Dragon('Nozdormu', 125, 25, false, 1, 0);
 
             break;
 
-        case 'Griffin': enemy = new Griffin('Golden Griffin', 100, 20, false, 0, 0);
+        case 'Golem': enemy = new Golem('Célestial Golem', 130, 20, false, 1, 0);
 
             break;
+
+        case 'Griffin': enemy = new Griffin('Golden Griffin', 100, 20, false, 1, 0);
+
+            break;
+
+        case 'Werewolf': enemy = new Werewolf('Genn Greymane', 100, 22, false, 1, 0);
     }
     console.log(enemy);
     
@@ -117,17 +120,12 @@ function pushEnemy(): void {
 
 pushEnemy();
 
-/*readonly */
+let battle = new Battle(race, enemy);
 
-//let Enemy = new `${enemyRace}`()
-
-let jeanPierre = new Hero("Jean-Pierre",80,20,false,0,0,"human");
-
-let drake = new Werewolf("ChienDenté",50,10,false,0,0);
+fight.addEventListener('click', () => {
+    battle.declare();
+})
 
 
-let battleTest = new Battle(jeanPierre,drake);
-
-battleTest.declare();
 
 
