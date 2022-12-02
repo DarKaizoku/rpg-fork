@@ -1,3 +1,4 @@
+import { enemyRace, playerRace } from ".";
 import { Assassin } from "./assassin";
 import { Character } from "./character";
 import { Dragon } from "./dragon";
@@ -17,39 +18,95 @@ export class Battle {
         this.enemy = enemy;
     }
 
+    affichageStat(tableau: any,tableau2: any) {
 
-    /* affichageTour(tableau: any, tour: number) {
+        const affichage: HTMLElement | any = document.getElementById('combat');
+
+        let output: string = `
+        <div>
+        <tr>
+            <th class="pt-4" scope="row" rowspan="2">0</th>
+            <td>name: ${tableau[0]} , health: ${tableau[1]}, strength: ${tableau[2]}, lvl: ${tableau[3]}, xp: ${tableau[4]}, race: ${tableau[5]}</td>
+        </tr>
+        <tr>
+            
+            <td>name: ${tableau2[0]} , health: ${tableau2[1]}, strength: ${tableau2[2]}, lvl: ${tableau2[3]}, xp: ${tableau2[4]}</td>
+        </tr>
+    </div>
+    `;
+            affichage.innerHTML += output;
+        
+    }
+    affichageTour(tableauHero: any,tableauEnemy: any, tour: number) {
 
             const affichage: HTMLElement | any = document.getElementById('combat');
 
+            /* let dieHero = ;
+            let dieEnemy = ;
+
+            if() */
+
             let output: string = `
-            <div id="combat">
+            <div>
             <tr>
                 <th class="pt-4" scope="row" rowspan="2">${tour}</th>
-                <td>${tableau[0]} attaque en 1er avec une force de :${tableau[2]}</td>
+                <td>${tableauHero[0]} attaque avec une force de :${tableauHero[2]}</td>
             </tr>
+            <tr>
+                <td>${tableauEnemy[0]} recoit ${tableauHero[2]}, ${tableauEnemy[0]} health passe a ${tableauEnemy[1]}</td>
+            </tr>
+        </div>`;
+                affichage.innerHTML += output;
+    }
+    affichageVictoire(tableauHero,tableauEnemy){
+        const affichage: HTMLElement | any = document.getElementById('combat');
+
+        let output: string = `
+        <div>
+        <tr><th class="pt-4" scope="row" rowspan="2">Fin de Kombat</th>
+        ${this.affichageXpUp(tableauHero[0])}</tr>
+        <tr>
+        ${this.affichageHealthUp(tableauHero,tableauEnemy)}
+        </tr>
         </div>
-              `;
+        <div>
+        <tr><th class="pt-4" scope="row" rowspan="2">Nouvelles Stats</th>
+        <td class="text-center">name: ${tableauHero[0]} , health: ${tableauHero[1]}, strength: ${tableauHero[2]}, lvl: ${tableauHero[3]}, xp: ${tableauHero[4]}, race: ${tableauHero[5]}</td>
+        </tr>
+        </div>
+    `;
+            affichage.innerHTML += output;
+        
+            
 
-              affichage.innerHTML += output;
-            const newRow1 = document.createElement("tr");
-            const newCaseRound = document.createElement(`"th class="pt-4" scope="row" rowspan="2"`);
-            newCaseRound.textContent = `${tour}`;
-            const newCaseAction1 = document.createElement("td");
-            newCaseAction1.textContent = `Cloud attaque en 1er avec strength`;
-            const newRow2 = document.createElement("tr");
-            const newCaseAction2 = document.createElement("td");
-            newCaseAction2.textContent = `test 1 ${tableau} 2 Test..`;
-            newRow1.appendChild(newCaseRound);
-            newRow1.appendChild(newCaseAction1);
-            affichage.appendChild(newRow1);
-            newRow2.appendChild(newCaseAction2);
-            affichage.appendChild(newRow2);
-        } */
+    }
+    affichageXpUp(name){
+        const affichage: HTMLElement | any = document.getElementById('combat');
+        let output: string = '';
+        return output = `
+        <td>
+        L'xp de ${name} augmente de 2.
+        </td>
+    `;
+            
+        
+    }
+    affichageHealthUp(tableauHero,tableauEnemy){
+        const affichage: HTMLElement | any = document.getElementById('combat');
 
+        let healthEnemy = tableauEnemy[1].toFixed(1);
+        let healthUp = (tableauEnemy[1] * 0.1).toFixed(1) ;
+
+        let output: string = '';
+        return output = `<td>
+        ${tableauHero[0]} recupere 10% de health de ${tableauEnemy[0]}, ${healthEnemy}* 0.1 = ${healthUp} .
+        </td>
+    `;
+    }
     declare(): void {
-        console.log(this.hero.stat());
-        console.log(this.enemy.stat());
+        
+        this.affichageStat(this.hero.stat(),this.enemy.stat());
+        let initEnemyStat = this.enemy.stat();
         //const initTour = 1;
         let tour = 1;
         let countAffichage = 1;
@@ -59,7 +116,7 @@ export class Battle {
             //console.log(countAffichage);
             
             this.hero.attack(this.enemy)
-            //this.affichageTour(this.hero.stat(), tour);
+            this.affichageTour(this.hero.stat(),this.enemy.stat(), countAffichage);
             //console.log(this.enemy)
             
             ++tour
@@ -90,7 +147,9 @@ export class Battle {
             }
 
             //console.log(this.hero);
-            //this.affichageTour(this.enemy.stat(),tour);
+            if(this.enemy.getHealth() > 0){
+                this.affichageTour(this.enemy.stat(),this.hero.stat(),countAffichage)
+            }
             ++tour
             ++countAffichage
             //console.log(`TOUR ${tour}`)
@@ -102,19 +161,19 @@ export class Battle {
                 //console.log(`RESET TOUR`)
             }
 
-            console.log(this.hero, this.enemy)
+            
         }
         //console.log(this.hero, this.enemy);
 
         if (this.enemy.notAlive()) { console.log(this.enemy.die()) };
 
-        /* if (!this.hero.notAlive()) {
+        if (!this.hero.notAlive()) {
             this.xpUp(this.hero);
             this.healthUp(this.hero);
-            console.log(this.hero.stat());
+            this.affichageVictoire(this.hero.stat(),initEnemyStat);
         } else { console.log(this.hero.die()) };
         //console.log(this.hero, this.enemy);
-        return; */
+        return;
     }
 
     xpUp(hero: Character) {
