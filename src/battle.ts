@@ -164,9 +164,9 @@ export class Battle {
         }
         //console.log(this.hero, this.enemy);
 
-        if (this.enemy.notAlive()) { console.log(this.enemy.die()) };
+        //if (this.enemy.notAlive()) { console.log(this.enemy.die()) };
 
-        if (!this.hero.notAlive()) {
+        if (this.enemy.notAlive()) {
             this.xpUp(this.hero);
             this.healthUp(this.hero);
             this.affichageVictoire(this.hero.stat(),initEnemyStat);
