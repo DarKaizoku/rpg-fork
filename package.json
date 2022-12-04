@@ -10,7 +10,6 @@
   },
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "esbuild": "^0.14.54",
     "phaser": "^3.55.2",
