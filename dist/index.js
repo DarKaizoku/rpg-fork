@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+exports.__esModule = false;
 var selectRace = document.getElementById('selectHeroRace');
 var selectEnemy = document.getElementById('selectEnemy');
 var tableRace = [];
